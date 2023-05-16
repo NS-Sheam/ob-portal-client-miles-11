@@ -53,7 +53,7 @@ function Banner() {
               </div>
             </div>
           </div>
-          <div className="col-md-6 col-sm-12">
+          <div className="col-md-6 col-sm-12 ">
             <img
               className="banner-image"
               src="https://alzo-ng.hibootstrap.com/assets/img/home-three/banner-main.png"
