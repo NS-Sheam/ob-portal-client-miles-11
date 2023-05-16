@@ -17,7 +17,7 @@ export const AuthContext = createContext(null);
 const auth = getAuth(app);
 
 const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState({});
+  const [user, setUser] = useState({email : "job@gmail.com"});
 
   const registerUser = (email, password) => {
     return createUserWithEmailAndPassword(auth, email, password);
@@ -31,14 +31,14 @@ const AuthProvider = ({ children }) => {
     return signOut(auth);
   };
 
-  useEffect(() => {
-    const unSubscribe = onAuthStateChanged(auth, (loggedInUser) => {
-      setUser(loggedInUser);
-    });
-    return () => {
-      unSubscribe();
-    };
-  }, []);
+  // useEffect(() => {
+  //   const unSubscribe = onAuthStateChanged(auth, (loggedInUser) => {
+  //     setUser(loggedInUser);
+  //   });
+  //   return () => {
+  //     unSubscribe();
+  //   };
+  // }, []);
 
   const authInfo = { registerUser, user, logOut, loginUser };
   return (

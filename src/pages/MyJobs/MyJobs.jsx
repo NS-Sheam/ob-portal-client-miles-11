@@ -18,10 +18,10 @@ const MyJobs = () => {
   const [modalShow, setModalShow] = React.useState(false);
   const [control, setControl] = useState(false);
   useEffect(() => {
-    fetch(`http://localhost:5000/myJobs/${user?.email}`)
+    fetch(`http://localhost:5000/allJobs/?email=${user?.email}`)
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        // console.log(data);
         setJobs(data);
       });
   }, [user, control]);
@@ -29,7 +29,7 @@ const MyJobs = () => {
     fetch(`http://localhost:5000/getJobsByText/${searchText}`)
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        // console.log(data);
         setJobs(data);
       });
   };
@@ -76,7 +76,7 @@ const MyJobs = () => {
           </thead>
           <tbody>
             {jobs?.map((job, index) => (
-              <tr>
+              <tr key={index}>
                 <td>{index + 1}</td>
                 <td>{job.title}</td>
                 <td>{job.category}</td>

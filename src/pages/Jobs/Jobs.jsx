@@ -43,13 +43,15 @@ const Jobs = () => {
     },
   ];
   const [jobs, setJob] = useState([]);
-  const [activeTab, setActiveTab] = useState("");
+  const [activeTab, setActiveTab] = useState("all");
+  console.log(activeTab);
 
   useEffect(() => {
     fetch(`http://localhost:5000/allJobsByCategory/${activeTab}`)
       .then((res) => res.json())
       .then((result) => {
         setJob(result);
+        console.log(result);
       });
   }, [activeTab]);
 
